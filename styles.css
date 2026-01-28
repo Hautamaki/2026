@@ -6,6 +6,7 @@
     font-optical-sizing: auto;
     font-weight: bold;
     font-style: normal;
+    color: #13171f;
 }
 
 .spacer {
@@ -143,6 +144,31 @@ button {
 
 .white-font {
     color: white;
+}
+.gray-font {
+  color: rgb(61, 61, 61);
+}
+
+#success-message, #error-message {
+  display: none;
+}
+.alert-box-neg {
+  background-color: rgba(255, 66, 66, 0.2);
+  border: 2px solid rgb(222, 80, 80);
+  border-radius: 6px;
+  padding: 5px 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.alert-box-pos {
+  background-color: rgba(66, 255, 66, 0.2);
+  border: 2px solid rgb(80, 222, 80);
+  border-radius: 6px;
+  padding: 5px 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+} .alert-box-pos p, .alert-box-neg p {
+  margin: 0;
 }
 
 .card {

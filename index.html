@@ -9,20 +9,20 @@
 </head>
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 <script>
-  emailjs.init("YOUR_PUBLIC_KEY");
+  emailjs.init("GD6SFFUbg8-aJWvwz");
 </script>
 <body>
 
 
     <section class="hero-section">
         
-        <nav><p>logo</p></nav>
+        <nav><p class="white-font">kuutamo.site</p></nav>
 
         <div class="spacer"></div>
 
 
-        <h1 class="white-font">Tavanomaista parempi tapa saada asiakkaita.</h1>
-        <p class="white-font">Tavanomaista parempi tapa saada asiakkaita verkkosivujenne kautta.</p>
+        <h1 class="white-font">Taianomaiset nettisivut parhaalla palvelulla</h1>
+        <p class="white-font">Tavanomaista parempi tapa saada asiakkaita on luotettavien ja selkeiden nettisivujen kautta.</p>
         <!-- <p class="white-font">Tarkoitamme sitä että nettisivunne tuottaa nykyistä enemmän kävijöitä jotka ostavat tuotteitanne.</p> -->
 
         <div class="spacer"></div>
@@ -39,9 +39,20 @@
         <p class="small-text">Vastaamme 24 tunnin kuluessa!</p>
 
     </section>
+    <section>
+        <h2>"Kaikki onnistuu" -asenteella</h2>
+        <p class="gray-font">Pyysimme Kuutamoa tekemään meille nopeat tärkeät päivitykset meidän sivuillemme ja he hoitivat homman ihan heti.</p>
+    </section>
     <section class="contact-us-section">
         <h2>Jätä yhteystietosi.</h2>
         <p>jeeejee</p>
+
+        <div id="success-message" class="alert-box-pos">
+            <p>Kiitos yhteydenotosta, vastaamme sinulle pian.</p>
+        </div>
+        <div id="error-message" class="alert-box-neg">
+            <p>Lomakkeen lähettämisessä virhe, yritä hetken päästä uudestaan.</p>
+        </div>
 
         <form id="contact-form">
             <input type="text" name="name" placeholder="Nimi" required />
@@ -50,7 +61,6 @@
             <textarea name="message"></textarea>
 
             <div class="hidden-inputs">
-                <input type="text" name="ip" placeholder="ip" />
                 <input type="text" name="ip" placeholder="ip" />
             </div>
             

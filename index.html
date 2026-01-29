@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nettisivut</title>
+    <title>Kuutamo.site</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
@@ -20,6 +20,7 @@
 
         <div class="spacer"></div>
 
+        <!-- <p class="tag">Kotimainen palvelu</p> -->
 
         <h1 class="white-font">Taianomaiset nettisivut parhaalla palvelulla</h1>
         <p class="white-font">Tavanomaista parempi tapa saada asiakkaita on luotettavien ja selkeiden nettisivujen kautta.</p>
@@ -30,8 +31,10 @@
 
         <a href="#" class="play-video">
             <div class="hero-video3">
-                <img src="images/rydale-clothing-PONlMw_4UOs-unsplash.jpg" alt="">
-                <p class="white-font"><b>Katso video!</b> <br> Asiakkaamme, Mielialakeulan kokemus.</p>
+                <!-- <img src="images/play.png" alt="" class="play-image"> -->
+                <img src="images/rydale-clothing-PONlMw_4UOs-unsplash.jpg" alt="" class="video-image">
+                <div class="play-icon-small">▶</div>
+                <p class="white-font"> Asiakkaamme, Mielialakeulan kokemus. <b>Katso video!</b></p>
             </div>
         </a>
 
@@ -60,9 +63,12 @@
             <input type="text" name="name" placeholder="Nimi" required />
             <input type="email" name="email" placeholder="Sähköposti" required />
             <input type="text" name="company" placeholder="Yritys" required />
-            <textarea name="message"></textarea>
+            <textarea name="message" placeholder="Viesti"></textarea>
 
-            <input type="checkbox" name="isallowed" required> <p>Hyväksyn <a href="#">tietojen käytäntöehdot.</a></p>
+            <div class="form-checkbox">
+                <input type="checkbox" name="isallowed" required>
+                <p>Hyväksyn <a href="#">tietojen käytäntöehdot.</a></p>
+            </div>
             <button type="submit">Lähetä</button>
           </form>
     </section>

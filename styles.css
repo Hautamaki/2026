@@ -104,7 +104,7 @@ body {
 
 }
 .hero-video3 p {
-  padding-left: 20px;
+  /* padding-left: -240px; */
   font-size: 16px;
   margin-top: 8px;
   color: #13171f;
@@ -122,8 +122,27 @@ body {
 
 
 .play-icon-small {
-  position: absolute;
-  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  position: relative;
+  /* top: 50%;
+  left: 50%; */
+  /* transform: translate(-50%, -50%); */
+  left: -61px;
+  /* top: 10px; */
+  top: 13px;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.35);
+  /* width: 50px; */
+  /* height: 50px; */
+  /* padding: 10px; */
+  height: 35px;
+  width: 55px;
+  border-radius: 100px;
+} .play-icon-small p {
+  color: white;
+  margin: 0;
+  padding: 0;
+  padding-left: 12px;
+  padding-top: 5px;
 }
 
 /* VIDEO THUMBNAIL */
@@ -190,10 +209,12 @@ section {
     border-radius: 3px;
     /* border: 1px solid black; */
     text-align: center;
+} button:hover {
+  cursor: pointer;
 }
 
 input[type="text"], input[type="email"] {
-    width: 100%;
+    width: calc(100% - 10px);
     height: 30px;
     margin-bottom: 6px;
     color: var(--black);
@@ -205,6 +226,12 @@ input[type="text"], input[type="email"] {
 
 .form-checkbox {
   display: flex;
+} .form-checkbox p {
+  font-size: 16px;
+}
+
+a {
+  color: blue;
 }
 
 textarea {
@@ -216,6 +243,8 @@ textarea {
 }
 button {
     background-color: #0e0e0e;
+    background-color: rgb(52, 52, 254);
+
     text-decoration: none;
     color: white;
     font-weight: 400;
@@ -223,8 +252,8 @@ button {
     /* margin-top: 100px; */
     display: block;
     font-size: 15px;
-    border-radius: 3px;
-    border: 1px solid black;
+    border: none;
+    border-radius: 6px;
     width: 100%;
     margin-top: 10px;
 }
@@ -283,6 +312,10 @@ button {
     height: 200px;
     object-fit: cover;
   }
+
+footer {
+  background-color: #13171f;
+}
   
   /* Tablet */
   @media screen and (min-width: 768px) {

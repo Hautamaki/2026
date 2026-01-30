@@ -20,8 +20,8 @@
 // Lomakkeen lähetys
 document.getElementById('contact-form').addEventListener('submit', function(event) {
 
-  document.getElementById('loader').style.display = block;
-  document.getElementById('send-message-button-text').style.display = none;
+  document.getElementById('loader').style.display = "inline-block";
+  document.getElementById('send-message-button-text').style.display = "none";
 
   event.preventDefault();
           
@@ -35,8 +35,8 @@ document.getElementById('contact-form').addEventListener('submit', function(even
       document.getElementById('success-message').style.display = 'block';
       document.getElementById('error-message').style.display = 'none';
 
-      document.getElementById('loader').style.display = none;
-      document.getElementById('send-message-button-text').style.display = block;
+      document.getElementById('loader').style.display = "none";
+      document.getElementById('send-message-button-text').style.display = "block";
                   
       // Tyhjennä lomake
       document.getElementById('contact-form').reset();
@@ -51,8 +51,8 @@ document.getElementById('contact-form').addEventListener('submit', function(even
       document.getElementById('error-message').style.display = 'block';
       document.getElementById('success-message').style.display = 'none';
 
-      document.getElementById('loader').style.display = none;
-      document.getElementById('send-message-button-text').style.display = block;
+      document.getElementById('loader').style.display = "none";
+      document.getElementById('send-message-button-text').style.display = "block";
     });
 });
   

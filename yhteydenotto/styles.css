@@ -3,7 +3,6 @@
 
 :root {
   --black: #13171f;
-  --blue: blue;
 }
 
 .outfit-header, h1, h2, h3, h4, h5 {
@@ -276,14 +275,23 @@ button {
 }
 
 .hero-section {
-    height: 100vh;
+    height: 50vh;
     /* background-image: url(images/gabe-lFUM8nCrs0I-unsplash.jpg); */
     /* background: -webkit-linear-gradient(to bottom, #000000, #0101ab); */
     /* background: linear-gradient(to bottom, #277dff, #0101ab);  */
-    background-image: url("images/eden-lorish-dupe.jpeg");
+    background-image: url("../images/eden-lorish-dupe.jpeg");
+    background-image: url("../images/ashley-singerling-dupe\(1\).jpeg");
+
     background-size: cover;
 } .hero-section h1 {
     font-size: 33px;
+}
+.hero-section h1, .hero-section p {
+    color: blue;
+}
+
+nav a {
+    text-decoration: none;
 }
 
 .play-video {

@@ -19,6 +19,10 @@
 
 // Lomakkeen lähetys
 document.getElementById('contact-form').addEventListener('submit', function(event) {
+
+  document.getElementById('loader').style.display = block;
+  document.getElementById('send-message-button-text').style.display = none;
+
   event.preventDefault();
           
   // Generoi contact_number
@@ -30,6 +34,9 @@ document.getElementById('contact-form').addEventListener('submit', function(even
       // Näytä onnistumisviesti
       document.getElementById('success-message').style.display = 'block';
       document.getElementById('error-message').style.display = 'none';
+
+      document.getElementById('loader').style.display = none;
+      document.getElementById('send-message-button-text').style.display = block;
                   
       // Tyhjennä lomake
       document.getElementById('contact-form').reset();
@@ -43,6 +50,9 @@ document.getElementById('contact-form').addEventListener('submit', function(even
       console.error('Virhe:', error);
       document.getElementById('error-message').style.display = 'block';
       document.getElementById('success-message').style.display = 'none';
+
+      document.getElementById('loader').style.display = none;
+      document.getElementById('send-message-button-text').style.display = block;
     });
 });
   

@@ -274,6 +274,13 @@ button {
     margin-top: 10px;
 }
 
+#send-message-button-text {
+    font-weight: 500;
+}
+#loader {
+    display: none;
+}
+
 .hero-section {
     height: 50vh;
     /* background-image: url(images/gabe-lFUM8nCrs0I-unsplash.jpg); */

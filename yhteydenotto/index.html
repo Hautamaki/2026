@@ -53,7 +53,7 @@
                 <input type="checkbox" name="isallowed" required>
                 <p>Hyväksyn <a href="#">tietojen käytäntöehdot.</a></p>
             </div>
-            <button type="submit">Lähetä</button>
+            <button type="submit"><span id="send-message-button-text">Lähetä</span> <span id="loader" class="loader"></span></button>
           </form>
 
           <div class="spacer"></div>
@@ -62,6 +62,27 @@
     <footer>
         <h2>Hello</h2>
     </footer>
+    <style>
+        .loader {
+    width: 20px;
+    height: 20px;
+    border: 3px solid #ffffff44;
+    border-bottom-color: white;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    }
+
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    } 
+    </style>
 </body>
 <script src="emailjs.js"></script>
 </html>

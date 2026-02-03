@@ -1,21 +1,11 @@
-/* Mobile styles (default) */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
-
-:root {
-  --black: #13171f;
-  --blue: #0000ff;
-}
-
-.logo {
-  font-weight: 600;
-}
-
-.outfit-header, h1, h2, h3, h4, h5 {
-    font-family: "Outfit", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: bold;
-    font-style: normal;
-    color: #13171f;
+.flex-wrapper {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+	align-content: stretch;
+  height: 70%;
 }
 
 h2 {
@@ -317,7 +307,7 @@ button {
 }
 
 .hero-section {
-    height: 100vh;
+    height: 90vh;
     /* background-image: url(images/gabe-lFUM8nCrs0I-unsplash.jpg); */
     /* background: -webkit-linear-gradient(to bottom, #000000, #0101ab); */
     /* background: linear-gradient(to bottom, #277dff, #0101ab);  */

@@ -302,7 +302,7 @@ label {
     font-size: 33px;
 }
 .hero-section h1, .hero-section p {
-    color: blue;
+    /* color: blue; */
 }
 
 nav a {

@@ -281,6 +281,9 @@ button {
     display: none;
 }
 
+.full-width {
+  background-color: var(--black);
+}
 .hero-section {
     height: 50vh;
     /* background-image: url(images/gabe-lFUM8nCrs0I-unsplash.jpg); */

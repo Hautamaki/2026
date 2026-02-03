@@ -1,0 +1,31 @@
+/* Mobile styles (default) */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+:root {
+  --black: #13171f;
+  --blue: blue;
+  --red: #FF101F;
+}
+
+.logo-text {
+  font-weight: 600;
+}
+
+.logo {
+    display: flex;
+}
+
+.logo img {
+    margin-top: 17px;
+    margin-right: 8px;
+    height: 25px;
+    width: auto;
+}
+
+.outfit-header, h1, h2, h3, h4, h5 {
+    font-family: "Outfit", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: bold;
+    font-style: normal;
+    color: #13171f;
+}

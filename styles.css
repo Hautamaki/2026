@@ -6,6 +6,10 @@
   --blue: blue;
 }
 
+.logo {
+  font-weight: 600;
+}
+
 .outfit-header, h1, h2, h3, h4, h5 {
     font-family: "Outfit", sans-serif;
     font-optical-sizing: auto;
@@ -81,6 +85,25 @@ body {
 .hero-video {
   display: grid;
   place-items: center;
+}
+
+.links-section {
+  background-color: var(--blue);
+  padding: 2px 15px;
+  display: flex;
+  flex-direction: column;
+} .links-section .button2 {
+  /* display: block; */
+  
+  background-color: white;
+  border-radius: 100px;
+  color: var(--black);
+  text-decoration: none;
+  font-weight: 400;
+  padding: 5px 15px;
+  margin-bottom: 5px;
+} .links-section h2, .links-section p {
+  color: white;
 }
 
 .hero-video img{

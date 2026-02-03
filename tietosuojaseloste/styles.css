@@ -3,7 +3,6 @@
 
 :root {
   --black: #13171f;
-  --red: #FF101F;
 }
 
 .outfit-header, h1, h2, h3, h4, h5 {
@@ -282,13 +281,6 @@ button {
     display: none;
 }
 
-label {
-  font-weight: 600;
-} label span {
-  color: var(--red);
-  font-weight: bold;
-}
-
 .hero-section {
     height: 50vh;
     /* background-image: url(images/gabe-lFUM8nCrs0I-unsplash.jpg); */
@@ -364,9 +356,6 @@ footer {
       padding-left: 30%;
       padding-right: 30%;
       margin: auto;
-    }
-    .hero-section {
-      background-image: url("../images/kelly-sandrea-kovacs-dupe.jpeg");
     }
   }
   

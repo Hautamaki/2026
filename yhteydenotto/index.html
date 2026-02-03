@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kuutamo.site | Yhteydenotto</title>
+    <link rel="stylesheet" href="../global-styles.css">
     <link rel="stylesheet" href="styles.css?v=2">
 </head>
 <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
@@ -16,7 +17,7 @@
 
     <section class="hero-section">
         
-        <nav><a href="../index.html"><p class="white-font">Kuutamo.site</p></a></nav>
+        <nav><a href="../index.html"><p class="white-font logo">Kuutamo.site</p></a></nav>
 
         <div class="spacer30"></div>
 
@@ -33,7 +34,7 @@
 
     <section class="contact-us-section">
         <h2>Jätä meille yhteystietosi, vastaamme 24-tunnin kuluessa.</h2>
-        <p>Voit halutessasi jakaa viesti-kenttään lisätietoja projektin tarpeista.</p>
+        <p>Voit halutessasi jakaa viesti-kenttään lisätietoja projektin tarpeista kuten nykyisten nettisivujenne url-osoite, jos sellaiset jo on. Sovitaan sähköpostitse palaveri, jossa kartoitetaan nettisivu projektinne tarpeet.</p>
         <p class="small-text-red">Pakolliset kentät merkitty tähdellä *</p>
 
         <div id="success-message" class="alert-box-pos">
@@ -44,14 +45,18 @@
         </div>
 
         <form id="contact-form">
+            <label for="name">Nimi <span>*</span></label>
             <input type="text" name="name" placeholder="Nimi" required />
+            <label for="email">Sähköposti <span>*</span></label>
             <input type="email" name="email" placeholder="Sähköposti" required />
-            <input type="text" name="company" placeholder="Yritys" required />
+            <label for="company">Yritys</label>
+            <input type="text" name="company" placeholder="Yritys" />
+            <label for="message">Vapaaehtoinen viesti</label>
             <textarea name="message" placeholder="Viesti"></textarea>
 
             <div class="form-checkbox">
                 <input type="checkbox" name="isallowed" required>
-                <p>Hyväksyn <a href="#">tietojen käytäntöehdot.</a></p>
+                <p>Hyväksyn <a href="../tietosuojaseloste/index.html">tietojen käytäntöehdot.</a></p>
             </div>
             <button type="submit"><span id="send-message-button-text">Lähetä</span> <span id="loader" class="loader"></span></button>
           </form>

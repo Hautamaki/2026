@@ -413,6 +413,15 @@ button {
     object-fit: cover;
   }
 
+.bg-image-affiliate {
+  background-image: url("images/cora-pursley-dupe.jpeg");
+  height: 50vh !important;
+}
+
+nav a {
+  text-decoration: none;
+}
+
 footer {
   background-color: #13171f;
 }

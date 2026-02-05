@@ -35,6 +35,7 @@
     <section class="contact-us-section">
         <h2>Jätä meille yhteystietosi, vastaamme 24-tunnin kuluessa.</h2>
         <p>Voit halutessasi jakaa lisätietoja vapaaehtoiseen viestikenttään. Kuten nykyisten nettisivujen url-osoite tai kysymyksiin liittyen palveluun. Vastaamme viestiin sähköpostitse 24-tunnin kuluessa.</p>
+        <p>Yhteydenotto on ilmainen eikä sido sinua mihinkään.</p>
         <p class="small-text-red">Pakolliset kentät merkitty tähdellä *</p>
 
         <div id="success-message" class="alert-box-pos">
@@ -49,6 +50,21 @@
             <input type="text" name="name" placeholder="Nimi" required />
             <label for="email">Sähköposti <span>*</span></label>
             <input type="email" name="email" placeholder="Sähköposti" required />
+
+            <!-- <button class="more-info-button">Lisätietoja</button> -->
+            <!-- <p class="more-info-button">Lisätietoja</p>
+            <p>Voit halutessasi tarkentaa yhteydenoton tietoja. Mitä enemmän kenttiä täytät, sitä paremmin voimme valmistautua.</p>
+
+            <p></p>
+
+            <label for="service">Palvelu</label>
+            <select name="service" id="service">
+                <option value="Nettisivun-kehitys-palvelu">Nettisivut</option>
+                <option value="Nettisivun-kehitys-palvelu">IT-tuki</option>
+                <option value="Nettisivun-kehitys-palvelu">Muu</option>
+
+            </select> -->
+
             <label for="company">Yritys</label>
             <input type="text" name="company" placeholder="Yritys" />
             <label for="message">Vapaaehtoinen viesti</label>
@@ -56,9 +72,10 @@
 
             <div class="form-checkbox">
                 <input type="checkbox" name="isallowed" required>
-                <p>Hyväksyn <a href="../tietosuojaseloste/index.html">tietojen käytäntöehdot.</a></p>
+                <p>Hyväksyn <a href="../tietosuojaseloste/index.html">tietojen käyttöehdot.</a></p>
             </div>
             <button type="submit"><span id="send-message-button-text">Lähetä</span> <span id="loader" class="loader"></span></button>
+            <p class="small-text">Emme koskaan anna tietojasi kolmansille osapuolille. Vastaamme yhteydenottoihin 24-tunnin kuluessa.</p>
           </form>
 
           <div class="spacer"></div>

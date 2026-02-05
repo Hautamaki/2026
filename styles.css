@@ -435,4 +435,10 @@ footer {
     button {
       max-width: 300px !important;
     }
+    .side-by-side {
+      display: flex;
+      gap: 10px;
+    } .side-by-side div {
+      width: 100%;
+    }
   }

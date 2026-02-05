@@ -389,13 +389,13 @@ button {
   margin-top: 20px;
 }
 .icon .bg1 {
-  background-color: var(--color1);
+  background-color: var(--lightblue);
 }
 .icon .bg2 {
   background-color: var(--color2);
 }
 .icon .bg3 {
-  background-color: var(--color3);
+  background-color: var(--color1);
 }
 .icon .bg4 {
   background-color: var(--color4);

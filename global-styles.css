@@ -3,9 +3,21 @@
 
 :root {
   --black: #13171f;
-  --blue: blue;
+  --blue: #004FFF;
   --lightblue: rgb(98, 140, 255);
   --red: #FF101F;
+
+  --color1:#EF476F;
+  --color2:#FFD166;
+  --color3:#06D6A0;
+  --color4:#26547C;
+  --color5:#1B4353;
+
+  --color1:#FB5607;
+  --color2:#FF006E;
+  --color3:#8338EC;
+  --color4:#FFBE0B;
+  --color5:#1B4353;
 }
 
 .logo-text {

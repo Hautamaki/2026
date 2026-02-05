@@ -388,6 +388,18 @@ button {
   margin-right: 15px;
   margin-top: 20px;
 }
+.icon .bg1 {
+  background-color: var(--color1);
+}
+.icon .bg2 {
+  background-color: var(--color2);
+}
+.icon .bg3 {
+  background-color: var(--color3);
+}
+.icon .bg4 {
+  background-color: var(--color4);
+}
 
 .card {
     padding: 1rem;

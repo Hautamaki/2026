@@ -319,13 +319,19 @@ label {
 } .hero-section h1 {
     font-size: 33px;
 }
+
+h1 {
+  color: var(--red) !important;
+}
+.hero-section p {
+  color: var(--red);
+}
+
 .hero-section h1, .hero-section p {
     /* color: blue; */
 }
 
-nav a {
-    text-decoration: none;
-}
+
 
 .play-video {
   text-decoration: none;

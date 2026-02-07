@@ -3,21 +3,30 @@
 
 :root {
   --black: #13171f;
+
   --blue: #004FFF;
   --lightblue: rgb(98, 140, 255);
   --red: #FF101F;
+  --green: rgb(1, 170, 1);
 
-  --color1:#EF476F;
+  /* --color1:#EF476F;
   --color2:#FFD166;
   --color3:#06D6A0;
   --color4:#26547C;
-  --color5:#1B4353;
+  --color5:#1B4353; */
 
   --color1:#75b543;
   --color2:#f730fa;
   /* --color2:#fa631d; */
   --color3:#ff0051;
   --color4:#ffc832;
+  --color5:#1B4353;
+
+  --color1: var(--green);
+  --color2: var(--red);
+  /* --color2:#fa631d; */
+  --color3: var(--red);
+  --color4:#ffbb00;
   --color5:#1B4353;
 }
 
@@ -42,4 +51,26 @@
     font-weight: bold;
     font-style: normal;
     color: #13171f;
+}
+
+.heading-with-icon {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: center;
+}
+.heading-with-icon img, .heading-with-icon .icon {
+    color: var(--red);
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+nav a {
+  text-decoration: none;
+} nav p {
+color: white !important;
 }

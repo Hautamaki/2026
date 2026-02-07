@@ -243,6 +243,11 @@ input[type="text"], input[type="email"] {
 
 .form-checkbox {
   display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: stretch;
 } .form-checkbox p {
   font-size: 16px;
 }

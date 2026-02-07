@@ -70,6 +70,10 @@
             <label for="message">Vapaaehtoinen viesti</label>
             <textarea name="message" placeholder="Viesti"></textarea>
 
+            <div style="display: none;">
+                <input id="affiliateInputField" type="text" name="affiliate" value="">
+            </div>
+
             <div id="affiliate-code" class="affiliate-code">
                 <p>Yhteydenottoosi on yhdistetty suosittelija <b id="displayAffiliateName">Ahmed Hasan</b></p>
             </div>
@@ -118,10 +122,13 @@
             if(document.getElementById("affiliate-code") && document.getElementById("displayAffiliateName")) {
                 document.getElementById("affiliate-code").style.display = "block";
                 document.getElementById("displayAffiliateName").innerHTML = suosittelija;
+
+                // document.getElementById("affiliateInputField").value =
             }
 
         }
     </script>
 </body>
 <script src="emailjs.js"></script>
+<script src="../affiliate.js"></script>
 </html>

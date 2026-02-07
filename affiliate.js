@@ -19,9 +19,12 @@ const affiliateId = urlParams.get("ref");
     }
 })();
 
+
+
 async function checkAndSaveAffiliateId(affiliateId) {
     try {
-        const response = await fetch('affiliates.json');
+
+        const response = await fetch('/affiliates.json');
         const data = await response.json();
         
         // Tarkista onko ID affiliates-taulukossa

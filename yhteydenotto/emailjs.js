@@ -1,22 +1,3 @@
-
-// emailjs.init("GD6SFFUbg8-aJWvwz");
-
-// document.getElementById("contact-form")
-//     .addEventListener("submit", function(e) {
-//         e.preventDefault();
-
-//       emailjs.sendForm(
-//         "lukqFuDHtL3WL0i5gUtjt",
-//         "template_w6nw46j",
-//         this
-//       ).then(() => {
-//         alert("Email sent!");
-//       }, (error) => {
-//         console.error(error);
-//         alert("Failed to send email.");
-//     });
-// });
-
 // Lomakkeen lähetys
 document.getElementById('contact-form').addEventListener('submit', function(event) {
 
@@ -44,7 +25,7 @@ document.getElementById('contact-form').addEventListener('submit', function(even
       // Piilota viesti 5 sekunnin jälkeen
       setTimeout(() => {
         document.getElementById('success-message').style.display = 'none';
-      }, 5000);
+      }, 15000);
     }, function(error) {
       // Näytä virheviesti
       console.error('Virhe:', error);

@@ -1,0 +1,41 @@
+/* Affiliate page only styles */
+.hero-section {
+    background-image: url("../images/cora-pursley-dupe.jpeg");
+    height: 50vh !important;
+}
+h1 {
+    color: var(--red) !important;
+}
+.hero-section p {
+    color: var(--red);
+}
+
+.heading-with-icon {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: center;
+}
+.heading-with-icon img, .heading-with-icon .icon {
+    color: var(--red);
+    height: 30px;
+    width: 30px;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+nav p {
+    color: white !important;
+}
+
+/* Desktop */
+  @media screen and (min-width: 992px) {
+    .hero-section {
+      background-image: url("../images/marissa-bastarache-dupe.jpeg");
+    }
+    .hero-section p {
+        color: var(--blue) !important;
+    }
+  }

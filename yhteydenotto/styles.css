@@ -289,6 +289,18 @@ label {
   font-weight: bold;
 }
 
+.affiliate-code {
+  border: 1px solid rgb(178, 176, 176);
+  border-left: 3px solid var(--blue);
+  padding-left: 10px;
+  border-radius: 4px;
+  margin-top: 10px;
+  background-color: rgb(239, 237, 237);
+} .affiliate-code p {
+  margin: 10px;
+  font-size: 17px;
+}
+
 .hero-section {
     height: 50vh;
     /* background-image: url(images/gabe-lFUM8nCrs0I-unsplash.jpg); */

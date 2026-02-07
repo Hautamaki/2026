@@ -463,4 +463,8 @@ footer {
     } .side-by-side div {
       width: 100%;
     }
+
+    .bg-image-affiliate {
+      background-image: url("images/marissa-bastarache-dupe.jpeg");
+    }
   }

@@ -70,6 +70,10 @@
             <label for="message">Vapaaehtoinen viesti</label>
             <textarea name="message" placeholder="Viesti"></textarea>
 
+            <div id="affiliate-code" class="affiliate-code">
+                <p>Yhteydenottoosi on yhdistetty suosittelija <b id="displayAffiliateName">Ahmed Hasan</b></p>
+            </div>
+
             <div class="form-checkbox">
                 <input type="checkbox" name="isallowed" required>
                 <p>Hyväksyn <a href="../tietosuojaseloste/index.html">tietojen käyttöehdot.</a></p>
@@ -85,6 +89,9 @@
         <h2>Hello</h2>
     </footer>
     <style>
+        #affiliate-code {
+            display: none;
+        }
         .loader {
     width: 20px;
     height: 20px;
@@ -105,6 +112,16 @@
     }
     } 
     </style>
+    <script>
+        let suosittelija = localStorage.getItem("affiliateName");
+        if(suosittelija) {
+            if(document.getElementById("affiliate-code") && document.getElementById("displayAffiliateName")) {
+                document.getElementById("affiliate-code").style.display = "block";
+                document.getElementById("displayAffiliateName").innerHTML = suosittelija;
+            }
+
+        }
+    </script>
 </body>
 <script src="emailjs.js"></script>
 </html>

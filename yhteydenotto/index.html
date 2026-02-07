@@ -117,16 +117,17 @@
     } 
     </style>
     <script>
-        let suosittelija = localStorage.getItem("affiliateName");
-        if(suosittelija) {
-            if(document.getElementById("affiliate-code") && document.getElementById("displayAffiliateName")) {
-                document.getElementById("affiliate-code").style.display = "block";
-                document.getElementById("displayAffiliateName").innerHTML = suosittelija;
 
-                // document.getElementById("affiliateInputField").value =
-            }
-
-        }
+        document.addEventListener('DOMContentLoaded', function() {
+            let suosittelija = localStorage.getItem("affiliateName");
+                if(suosittelija) {
+                    if(document.getElementById("affiliate-code") && document.getElementById("displayAffiliateName")) {
+                        document.getElementById("affiliate-code").style.display = "block";
+                        document.getElementById("displayAffiliateName").innerHTML = suosittelija;
+                        // document.getElementById("affiliateInputField").value =
+                    }
+                }
+        });
     </script>
 </body>
 <script src="emailjs.js"></script>

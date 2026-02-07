@@ -74,3 +74,11 @@ nav a {
 } nav p {
 color: white !important;
 }
+
+.image-and-text {
+  display: flex;
+}
+.image-and-text img {
+  width: 50%;
+  height: auto;
+}

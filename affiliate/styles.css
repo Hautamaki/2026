@@ -22,6 +22,6 @@ nav p {
       background-image: url("../images/marissa-bastarache-dupe.jpeg");
     }
     .hero-section p {
-        color: var(--blue) !important;
+        /* color: var(--blue) !important; */
     }
   }

@@ -230,8 +230,8 @@ section {
   cursor: pointer;
 }
 
+
 input[type="text"], input[type="email"] {
-    width: calc(100% - 10px);
     height: 30px;
     margin-bottom: 6px;
     color: var(--black);
@@ -239,6 +239,7 @@ input[type="text"], input[type="email"] {
     border: 2px solid var(--black);
     border-radius: 5px;
     padding-left: 10px;
+    width: calc(100% - 20px);
 }
 
 .form-checkbox {
@@ -258,7 +259,7 @@ a {
 
 textarea {
     margin-bottom: 6px;
-    width: 100%;
+    width: calc(100% - 10px);
     height: 150px;
     border: 2px solid black;
     border-radius: 5px;

@@ -100,16 +100,32 @@ body {
 } .links-section .button2 {
   /* display: block; */
   
+  display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	align-content: center;
+
   background-color: white;
   border-radius: 8px;
   color: var(--black);
   text-decoration: none;
   font-weight: 400;
-  padding: 8px 25px;
+  padding: 6px 15px 6px 15px;
   margin-bottom: 5px;
   width: fit-content;
 } .links-section h2, .links-section p {
   color: white;
+}
+
+.links-section .button2 svg {
+  height: 20px;
+}
+.links-section .button2 p {
+  color: black;
+  margin: 0;
+  padding-right: 40px;
 }
 
 .hero-video img{
@@ -420,14 +436,49 @@ button {
     object-fit: cover;
   }
 
-
+.project-image img {
+  width: 100%;
+  height: auto;
+}
 
 nav a {
   text-decoration: none;
 }
 
 footer {
-  background-color: #13171f;
+  background-color: var(--darkblue);
+} footer p {
+  color: white;
+}
+footer a {
+  color: rgb(211, 211, 211);
+  font-weight: 400;
+}
+footer .footer-links {
+  display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: baseline;
+	align-content: flex-start;
+}
+.footer-links-wrap {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: baseline;
+	align-content: flex-start;
+}
+.footer-links-wrap .button {
+  margin-top: 30px;
+  padding: 6px 32px;
+}
+.copyright {
+  color: rgb(146, 138, 138);
+  font-size: 14px;
+  text-align: center;
+  max-width: 100%;
 }
   
   /* Tablet */
@@ -437,6 +488,14 @@ footer {
       padding-left: 30%;
       padding-right: 30%;
       margin: auto;
+    }
+    .footer-links-wrap {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: baseline;
+      align-content: flex-start;
     }
   }
   
@@ -466,6 +525,14 @@ footer {
       gap: 10px;
     } .side-by-side div {
       width: 100%;
+    }
+    .footer-links-wrap {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: baseline;
+      align-content: flex-start;
     }
 
   }

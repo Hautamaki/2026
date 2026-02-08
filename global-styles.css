@@ -47,12 +47,15 @@
     width: auto;
 }
 
-.outfit-header, h1, h2, h3, h4, h5 {
+.outfit-header, h1, h2, h3, h4, h5, li {
     font-family: "Outfit", sans-serif;
     font-optical-sizing: auto;
     font-weight: bold;
     font-style: normal;
     color: #13171f;
+}
+li {
+  font-weight: 400;
 }
 
 .heading-with-icon {

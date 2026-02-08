@@ -377,9 +377,6 @@ h1 {
     object-fit: cover;
   }
 
-footer {
-  background-color: #13171f;
-}
   
   /* Tablet */
   @media screen and (min-width: 768px) {

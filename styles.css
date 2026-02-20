@@ -372,6 +372,9 @@ button {
     background-size: cover;
 } .hero-section h1 {
     font-size: 33px;
+} .hero-section h1 span {
+  font-weight: bold;
+  color: var(--darkblue);
 }
 
 .play-video {

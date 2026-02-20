@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Task Card Generator</title>
+
+<style>
+body{
+  font-family: Arial, sans-serif;
+  background:#f5f6f7;
+  padding:30px;
+}
+
+.container{
+  max-width:720px;
+  margin:auto;
+  background:white;
+  padding:20px;
+  border-radius:8px;
+  box-shadow:0 2px 6px rgba(0,0,0,0.08);
+}
+
+h2{ margin-top:0; }
+
+input, textarea, select, button{
+  width:100%;
+  margin-top:6px;
+  margin-bottom:12px;
+  padding:8px;
+  font-size:14px;
+  border:1px solid #ccc;
+  border-radius:4px;
+}
+
+button{
+  background:#3eb636;
+  color:white;
+  border:none;
+  cursor:pointer;
+}
+
+button.secondary{
+  background:#1976d2;
+}
+
+.preview{
+  margin-top:20px;
+  padding:14px;
+  background:#fafafa;
+  border:1px solid #ddd;
+  border-radius:6px;
+}
+
+/* Wrapper for hover controls */
+.card-wrapper{
+  position:relative;
+}
+
+.hover-controls{
+  position:absolute;
+  right:-5px;
+  top:50%;
+  transform:translateY(-50%);
+  display:flex;
+  gap:6px;
+  opacity:0;
+  transition:opacity 0.2s ease;
+}
+
+.card-wrapper:hover .hover-controls{
+  opacity:1;
+}
+
+.hover-btn{
+  background:#444;
+  color:white;
+  border:none;
+  font-size:11px;
+  padding:4px 6px;
+  border-radius:4px;
+  cursor:pointer;
+}
+
+.drag-handle{
+  cursor:grab;
+  font-size:14px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Email Task Card Generator</h2>
+
+  <label>Task Title</label>
+  <input id="title" placeholder="Task name">
+
+  <label>Description</label>
+  <textarea id="desc" rows="2" placeholder="Short description"></textarea>
+
+  <label>Status</label>
+  <select id="status">
+    <option value="done">Completed</option>
+    <option value="notdone">Not Finished</option>
+  </select>
+
+  <button onclick="addTask()">Add Task</button>
+  <button class="secondary" onclick="copyHTML()">Copy HTML for Email</button>
+
+  <div class="preview">
+    <strong>Preview (matches email exactly):</strong>
+    <div id="previewArea"></div>
+  </div>
+</div>
+
+<script>
+let tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
+
+function saveTasks(){
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+function addTask(){
+  const title = document.getElementById('title').value.trim();
+  const desc = document.getElementById('desc').value.trim();
+  const status = document.getElementById('status').value;
+  if(!title) return;
+
+  tasks.push({title, desc, status});
+  saveTasks();
+  renderPreview();
+
+  document.getElementById('title').value='';
+  document.getElementById('desc').value='';
+}
+
+function buildEmailCard(task){
+  const done = task.status === 'done';
+  const color = done ? '#3eb636' : '#d02d30';
+  const symbol = done ? '✔' : '✖';
+
+  return `
+<table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="max-width:480px;border:2px solid #e0e0e0;border-radius:5px;font-family:Arial,sans-serif;margin-bottom:8px;">
+  <tr>
+    <td style="padding:8px 10px;">
+      <table role="presentation" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="padding-right:8px;vertical-align:top;">
+            <div style="width:18px;height:18px;background:${color};color:#ffffff;border-radius:50%;text-align:center;font-size:12px;line-height:18px;font-weight:bold;">
+              ${symbol}
+            </div>
+          </td>
+          <td>
+            <div style="font-size:13px;font-weight:bold;color:#222;line-height:1.2;">
+              ${task.title}
+            </div>
+            <div style="font-size:12px;color:#555;line-height:1.2;">
+              ${task.desc}
+            </div>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>`;
+}
+
+function renderPreview(){
+  const area = document.getElementById('previewArea');
+  area.innerHTML = '';
+
+  tasks.forEach((task, index)=>{
+    const wrapper = document.createElement('div');
+    wrapper.className = 'card-wrapper';
+    wrapper.draggable = true;
+
+    wrapper.innerHTML = buildEmailCard(task);
+
+    const controls = document.createElement('div');
+    controls.className = 'hover-controls';
+
+    controls.innerHTML = `
+      <span class="drag-handle">☰</span>
+      <button class="hover-btn" onclick="editTask(${index})">Edit</button>
+      <button class="hover-btn" onclick="removeTask(${index})">Remove</button>
+    `;
+
+    wrapper.appendChild(controls);
+
+    wrapper.addEventListener('dragstart', e=>{
+      e.dataTransfer.setData('text/plain', index);
+    });
+
+    wrapper.addEventListener('dragover', e=>e.preventDefault());
+
+    wrapper.addEventListener('drop', e=>{
+      e.preventDefault();
+      const from = e.dataTransfer.getData('text/plain');
+      const to = index;
+      const moved = tasks.splice(from,1)[0];
+      tasks.splice(to,0,moved);
+      saveTasks();
+      renderPreview();
+    });
+
+    area.appendChild(wrapper);
+  });
+}
+
+function removeTask(index){
+  tasks.splice(index,1);
+  saveTasks();
+  renderPreview();
+}
+
+function editTask(index){
+  const task = tasks[index];
+  document.getElementById('title').value = task.title;
+  document.getElementById('desc').value = task.desc;
+  document.getElementById('status').value = task.status;
+  tasks.splice(index,1);
+  saveTasks();
+  renderPreview();
+}
+
+async function copyHTML() {
+  const preview = document.getElementById("previewArea");
+
+  // Create a temporary container
+  const tempContainer = document.createElement("div");
+
+  // Clone all cards and remove hover-only controls
+  preview.querySelectorAll(".card-wrapper").forEach(card => {
+    const clone = card.cloneNode(true);
+    const controls = clone.querySelector(".hover-controls");
+    if (controls) clone.removeChild(controls);
+    tempContainer.appendChild(clone);
+  });
+
+  // Get the HTML string
+  const htmlToCopy = tempContainer.innerHTML;
+
+  try {
+    // Modern clipboard API: copy as HTML
+    await navigator.clipboard.write([
+      new ClipboardItem({
+        "text/html": new Blob([htmlToCopy], { type: "text/html" }),
+        "text/plain": new Blob([htmlToCopy], { type: "text/plain" }) // fallback
+      })
+    ]);
+    alert("Cards copied to clipboard without hover buttons!");
+  } catch (err) {
+    console.error("Failed to copy:", err);
+    alert("Failed to copy. Try manually selecting the preview instead.");
+  }
+}
+
+renderPreview();
+</script>
+
+</body>
+</html>

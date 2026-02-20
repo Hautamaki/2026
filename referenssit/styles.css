@@ -1,0 +1,29 @@
+/* Affiliate page only styles */
+.hero-section {
+    background-image: url("../images/unoptimized-images/izzie-p.c.-dupe.jpeg");
+    height: 50vh !important;
+}
+h1 {
+    color: var(--red) !important;
+    color: white !important;
+}
+.hero-section p {
+    color: var(--red);
+}
+
+
+
+nav p {
+    color: white !important;
+}
+
+/* Desktop */
+  @media screen and (min-width: 992px) {
+    .hero-section {
+      /* background-image: url("../images/marissa-bastarache-dupe.jpeg"); */
+      background-position: center;
+    }
+    .hero-section p {
+        /* color: var(--blue) !important; */
+    }
+  }

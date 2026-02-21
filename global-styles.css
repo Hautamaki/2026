@@ -7,6 +7,7 @@
   --darkblue: #1e3565;
 
   --blue: #004FFF;
+  --accent: #a1ecff;
   --lightblue: rgb(98, 140, 255);
   --red: #FF101F;
   --green: rgb(1, 170, 1);
@@ -58,7 +59,9 @@ li {
   font-weight: 400;
   padding-bottom: 10px;
 }
-
+.gray-section {
+  background-color: rgb(226, 239, 247);
+}
 .heading-with-icon {
 	display: flex;
 	flex-direction: row;

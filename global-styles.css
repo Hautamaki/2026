@@ -1,6 +1,6 @@
 /* Mobile styles (default) */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Playpen+Sans+Thai:wght@100..800&display=swap');
 :root {
   --black: #13171f;
 
@@ -31,6 +31,21 @@
   --color3: var(--red);
   --color4:#ffbb00;
   --color5:#1B4353;
+}
+
+/* Spesific background images */
+.yrityksesi-hakukoneissa-img {
+  background-image: url("images/yrityksesi-hakukoneessa.png");
+  background-size: cover;
+} .yrityksesi-hakukoneissa-img p {
+  color: black !important;
+}
+.pricing-card-img {
+  background-image: url("images/vanhasta-uuteen2.png");
+  background-size: cover;
+  background-position: center;
+} .pricing-card-img p {
+  color: black !important;
 }
 
 .logo-text {

@@ -34,6 +34,11 @@
 }
 
 /* Spesific background images */
+.kelly-img {
+  background-image: url("images/kelly-sandrea-kovacs-dupe.jpeg");
+  background-size: cover;
+  background-position: center;
+}
 .yrityksesi-hakukoneissa-img {
   background-image: url("images/yrityksesi-hakukoneessa.png");
   background-size: cover;

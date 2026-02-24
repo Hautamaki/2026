@@ -601,6 +601,7 @@ button {
   margin-top: 0;
   font-size: 15px;
   color: gray;
+  font-weight: 500;
 }
 .white-box-element .white-box-image {
   width: 100%;
@@ -658,6 +659,15 @@ footer .footer-links {
   
   /* Tablet */
   @media screen and (min-width: 768px) {
+    .hero-section {
+      background-image: url("images/woman-streching-sky.jpeg");
+      background-size: cover;
+    }
+    .hero-section h1 span {
+      font-weight: bold;
+      color: var(--blue);
+      /* color: white; */
+    }
     section {
       /* width: 50%; */
       padding-left: 25%;

@@ -1,4 +1,5 @@
 /* Mobile styles (default) */
+/* https://www.svgrepo.com/collection/dazzle-line-icons/9 */
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Playpen+Sans+Thai:wght@100..800&display=swap');
 :root {
@@ -35,15 +36,20 @@
 
 /* Spesific background images */
 .kelly-img {
-  background-image: url("images/kelly-sandrea-kovacs-dupe.jpeg");
+  background: 
+    linear-gradient(0deg,rgba(0, 0, 0, 0.45) 20%, rgba(0, 0, 0, 0) 40%),
+    url("images/kelly-sandrea-kovacs-dupe.jpeg");
   background-size: cover;
   background-position: center;
 }
 .yrityksesi-hakukoneissa-img {
-  background-image: url("images/yrityksesi-hakukoneessa.png");
+  background:
+    linear-gradient(0deg,rgba(0, 0, 0, 0.35) 20%, rgba(0, 0, 0, 0) 40%),
+    url("images/laptop-on-a-grass-field.jpeg");
   background-size: cover;
+  background-position: center;
 } .yrityksesi-hakukoneissa-img p {
-  color: black !important;
+  /* color: black !important; */
 }
 .pricing-card-img {
   background-image: url("images/vanhasta-uuteen2.png");
@@ -62,7 +68,7 @@
 }
 
 .logo img {
-    margin-top: 15px;
+    margin-top: 20px;
     margin-right: 8px;
     height: 25px;
     width: auto;
@@ -110,4 +116,30 @@ color: white !important;
 .image-and-text img {
   width: 50%;
   height: auto;
+}
+
+li .icon {
+  width: 20px;
+  height: auto;
+  margin-right: 10px;
+}
+.pricing-features-list li {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: center;
+	align-content: stretch;
+}
+
+.grayed-out-icon {
+  background-color: rgb(196, 194, 194);
+  padding: 1px;
+  border-radius: 3px;
+}
+.greened-out-icon {
+  /* background-color: rgb(89, 175, 8); */
+  background-color: rgb(121, 194, 121);
+  padding: 1px;
+  border-radius: 3px;
 }

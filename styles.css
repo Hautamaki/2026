@@ -644,9 +644,16 @@ button {
 }
 .pricing-card h2 {
   color: white;
+  /* color: #696969; */
   font-size: 40px;
   margin: 0;
-} .pricing-card p {
+}
+.pricing-card h2 span {
+  font-weight: bold;
+  font-size: 18px;
+  color: var(--lightblue);
+}
+ .pricing-card p {
   margin: 0;
   color: var(--lightblue);
   font-weight: bold;

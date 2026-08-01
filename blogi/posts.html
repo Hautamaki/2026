@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<title>Postaukset</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="database.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="banner-img">
+  </div>
+
+  <a onclick="document.getElementById('post-dialog').showModal()" class="main-button" href="#">Luo uusi postaus</a>
+  <a class="main-button" href="login.html">Takaisin kirjautumissivulle</a>
+  <a onclick="document.getElementById('profile-dialog').showModal()" class="main-button" href="#">Profiili</a>
+
+
+  <h2>Julkaise omia ajatuksiasi blogikirjoituksilla.</h2>
+  <p>Vain sinä voit lukea julkaisemiasi blogipostauksia.</p>
+
+  <div id="status"></div>
+
+  <div id="not-logged-in" style="display:none;">
+    <p>Sinun täytyy kirjautua sisään nähdäksesi postaukset.</p>
+    <a href="login.html">Kirjaudu sisään</a>
+  </div>
+
+  <div id="posts-container" style="display:none;"></div>
+
+  <br>
+
+<!-- luo uusi postaus pop-up -->
+<dialog id="post-dialog">
+    <div class="banner-img profile-banner">
+    <p></p>
+    <button class="close-button" onclick="document.getElementById('post-dialog').close()">X</button>
+  </div>
+  <div class="dialog-content">
+      
+    <h2>Luo uusi postaus</h2>
+
+    <div id="status"></div>
+
+    <div id="not-logged-in" style="display:none;">
+      <p>Sinun täytyy kirjautua sisään luodaksesi postauksia.</p>
+      <a href="login.html">Kirjaudu sisään</a>
+    </div>
+
+    <div id="post-form" style="display:block;">
+      <div>
+        <label>Postaus</label><br>
+        <div class="input-container">
+          <input type="text" id="title" placeholder="Postauksen otsikko">
+          <textarea id="content" rows="10" cols="50" placeholder="Kirjoita postauksen sisältö tähän..."></textarea>
+        </div>
+      </div>
+
+      <br>
+      <button class="main-button" id="btn-create">Luo postaus</button>
+    </div>
+    <!--  -->
+    <button class="secondary-button" onclick="document.getElementById('post-dialog').close()">Sulje</button>
+  </div>
+</dialog>
+<!-- luo uusi postaus pop-up end -->
+
+<!-- profiili pop-up -->
+<dialog id="profile-dialog">
+  <div class="banner-img profile-banner">
+    <p></p>
+    <button class="close-button" onclick="document.getElementById('profile-dialog').close()">X</button>
+  </div>
+  <div class="dialog-content">
+    <h3>Profiilin tiedot</h3>
+    <p><strong>Sähköposti:</strong>  <span id="user-email"></span></p>
+    <p><strong>Luotu:</strong> <span id="dialog-created-at"></span></p>
+
+    <h3>Tilin asetukset</h3>
+    <p>Profiilikuva</p>
+    <p>Bannerin kuva</p>
+
+    <p>Kirjaudu ulos</p>
+    <button  class="secondary-button" onclick="document.getElementById('profile-dialog').close()">Sulje</button>
+  </div>
+</dialog>
+
+
+  <script>
+    // Supabase-client (db) tulee database.js-tiedostosta
+    const statusEl = document.getElementById('status');
+    const notLoggedInEl = document.getElementById('not-logged-in');
+    const postsContainerEl = document.getElementById('posts-container');
+    const userEmailEl = document.getElementById('user-email');
+    const postFormEl = document.getElementById('post-form');
+
+
+
+    function naytaTila(viesti) {
+      statusEl.textContent = viesti;
+    }
+
+    async function haePostaukset() {
+      naytaTila('Ladataan postauksia...');
+
+      // RLS varmistaa, että tämä palauttaa vain kirjautuneen käyttäjän omat postaukset
+      const { data, error } = await db
+        .from('posts')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (error) {
+        naytaTila('Virhe: ' + error.message);
+        return;
+      }
+
+      naytaTila('');
+
+      if (data.length === 0) {
+        postsContainerEl.innerHTML = '<p>Ei vielä postauksia.</p>';
+        return;
+      }
+
+      postsContainerEl.innerHTML = data.map(post => `
+        <div class='blog-post'>
+          <p>${escapeHtml(post.title)}</p>
+          <p>${escapeHtml(post.content)}</p>
+          <small>Luotu: ${new Date(post.created_at).toLocaleString('fi-FI')}</small>
+          <hr>
+        </div>
+      `).join('');
+    }
+
+    // Yksinkertainen suoja XSS:ää vastaan, kun sisältöä laitetaan innerHTML:ään
+    function escapeHtml(teksti) {
+      const div = document.createElement('div');
+      div.textContent = teksti;
+      return div.innerHTML;
+    }
+
+    function paivitaNakyma(session) {
+      if (session) {
+        notLoggedInEl.style.display = 'none';
+        postsContainerEl.style.display = 'block';
+        haePostaukset();
+      } else {
+        notLoggedInEl.style.display = 'block';
+        postsContainerEl.style.display = 'none';
+      }
+    }
+
+    // Tarkista kirjautumistila sivun latautuessa
+    db.auth.getSession().then(({ data: { session } }) => {
+      paivitaNakyma(session);
+    });
+
+    db.auth.onAuthStateChange((event, session) => {
+      paivitaNakyma(session);
+      userEmailEl.textContent = session.user.email;
+    });
+
+    document.getElementById('btn-create').addEventListener('click', async () => {
+      const title = document.getElementById('title').value.trim();
+      const content = document.getElementById('content').value.trim();
+
+      if (!title || !content) {
+        naytaTila('Täytä sekä otsikko että sisältö.');
+        return;
+      }
+
+      naytaTila('Luodaan postausta...');
+
+      // user_id täyttyy automaattisesti auth.uid():lla (default-arvo tietokannassa),
+      // joten sitä ei tarvitse lähettää tässä erikseen.
+      const { data, error } = await db
+        .from('posts')
+        .insert([{ title: title, content: content }]);
+
+      if (error) {
+        naytaTila('Virhe: ' + error.message);
+      } else {
+        naytaTila('Postaus luotu onnistuneesti!');
+        document.getElementById('title').value = '';
+        document.getElementById('content').value = '';
+        naytaTila('');
+        paivitaNakyma(session);
+      }
+    });
+  </script>
+
+</body>
+</html>

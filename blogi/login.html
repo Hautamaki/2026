@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<title>Kirjaudu / Rekisteröidy</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="database.js"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Kirjaudu sisään</h1>
+
+  <div id="status"></div>
+
+  <div id="auth-form">
+    <div>
+      <label>Sähköposti:</label><br>
+      <input type="email" id="email" placeholder="sähköposti@esimerkki.fi">
+    </div>
+    <div>
+      <label>Salasana:</label><br>
+      <input type="password" id="password" placeholder="salasana">
+    </div>
+    <br>
+    <button id="btn-login">Kirjaudu sisään</button>
+    <button id="btn-signup">Rekisteröidy</button>
+  </div>
+
+  <div id="logged-in-view" style="display:none;">
+    <p>Olet kirjautunut sisään: <span id="user-email"></span></p>
+    <button id="btn-logout">Kirjaudu ulos</button>
+    <br><br>
+    <a href="create-post.html">Luo uusi postaus</a><br>
+    <a href="posts.html">Näytä postaukset</a>
+  </div>
+
+  <script>
+    // Supabase-client (db) tulee database.js-tiedostosta
+    const statusEl = document.getElementById('status');
+    const authForm = document.getElementById('auth-form');
+    const loggedInView = document.getElementById('logged-in-view');
+    const userEmailEl = document.getElementById('user-email');
+
+    function naytaTila(viesti) {
+      statusEl.textContent = viesti;
+    }
+
+    // Näytä oikea näkymä kirjautumistilan mukaan
+    function paivitaNakyma(session) {
+      if (session) {
+        authForm.style.display = 'none';
+        loggedInView.style.display = 'block';
+        userEmailEl.textContent = session.user.email;
+      } else {
+        authForm.style.display = 'block';
+        loggedInView.style.display = 'none';
+      }
+    }
+
+    // Tarkista onko käyttäjä jo kirjautunut sivun latautuessa
+    db.auth.getSession().then(({ data: { session } }) => {
+      paivitaNakyma(session);
+    });
+
+    // Seuraa kirjautumistilan muutoksia
+    db.auth.onAuthStateChange((event, session) => {
+      paivitaNakyma(session);
+    });
+
+    document.getElementById('btn-signup').addEventListener('click', async () => {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      if (!email || !password) {
+        naytaTila('Täytä sähköposti ja salasana.');
+        return;
+      }
+
+      naytaTila('Rekisteröidytään...');
+      const { data, error } = await db.auth.signUp({ email, password });
+
+      if (error) {
+        naytaTila('Virhe: ' + error.message);
+      } else {
+        naytaTila('Rekisteröityminen onnistui. Tarkista sähköposti vahvistusta varten (jos vahvistus on käytössä).');
+      }
+    });
+
+    document.getElementById('btn-login').addEventListener('click', async () => {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      if (!email || !password) {
+        naytaTila('Täytä sähköposti ja salasana.');
+        return;
+      }
+
+      naytaTila('Kirjaudutaan...');
+      const { data, error } = await db.auth.signInWithPassword({ email, password });
+
+      if (error) {
+        naytaTila('Virhe: ' + error.message);
+      } else {
+        naytaTila('Kirjautuminen onnistui.');
+      }
+    });
+
+    document.getElementById('btn-logout').addEventListener('click', async () => {
+      await db.auth.signOut();
+      naytaTila('Olet kirjautunut ulos.');
+    });
+  </script>
+
+</body>
+</html>

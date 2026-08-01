@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<title>Luo uusi postaus</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="database.js"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+  <h1>Luo uusi postaus</h1>
+
+  <div id="status"></div>
+
+  <div id="not-logged-in" style="display:none;">
+    <p>Sinun täytyy kirjautua sisään luodaksesi postauksia.</p>
+    <a href="login.html">Kirjaudu sisään</a>
+  </div>
+
+  <div id="post-form" style="display:none;">
+    <div>
+      <label>Otsikko:</label><br>
+      <input type="text" id="title" placeholder="Postauksen otsikko">
+    </div>
+    <br>
+    <div>
+      <label>Sisältö:</label><br>
+      <textarea id="content" rows="10" cols="50" placeholder="Kirjoita postauksen sisältö tähän..."></textarea>
+    </div>
+    <br>
+    <button id="btn-create">Luo postaus</button>
+  </div>
+
+  <br>
+  <a href="posts.html">Näytä kaikki postaukset</a><br>
+  <a href="login.html">Takaisin kirjautumissivulle</a>
+
+  <script>
+    // Supabase-client (db) tulee database.js-tiedostosta
+    const statusEl = document.getElementById('status');
+    const notLoggedInEl = document.getElementById('not-logged-in');
+    const postFormEl = document.getElementById('post-form');
+
+    function naytaTila(viesti) {
+      statusEl.textContent = viesti;
+    }
+
+    function paivitaNakyma(session) {
+      if (session) {
+        notLoggedInEl.style.display = 'none';
+        postFormEl.style.display = 'block';
+      } else {
+        notLoggedInEl.style.display = 'block';
+        postFormEl.style.display = 'none';
+      }
+    }
+
+    // Tarkista kirjautumistila sivun latautuessa
+    db.auth.getSession().then(({ data: { session } }) => {
+      paivitaNakyma(session);
+    });
+
+    db.auth.onAuthStateChange((event, session) => {
+      paivitaNakyma(session);
+    });
+
+    document.getElementById('btn-create').addEventListener('click', async () => {
+      const title = document.getElementById('title').value.trim();
+      const content = document.getElementById('content').value.trim();
+
+      if (!title || !content) {
+        naytaTila('Täytä sekä otsikko että sisältö.');
+        return;
+      }
+
+      naytaTila('Luodaan postausta...');
+
+      // user_id täyttyy automaattisesti auth.uid():lla (default-arvo tietokannassa),
+      // joten sitä ei tarvitse lähettää tässä erikseen.
+      const { data, error } = await db
+        .from('posts')
+        .insert([{ title: title, content: content }]);
+
+      if (error) {
+        naytaTila('Virhe: ' + error.message);
+      } else {
+        naytaTila('Postaus luotu onnistuneesti!');
+        document.getElementById('title').value = '';
+        document.getElementById('content').value = '';
+      }
+    });
+  </script>
+
+</body>
+</html>
